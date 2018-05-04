@@ -7,8 +7,7 @@ const edicion = function (req, res) {
   query.exec(function(err,partidos){
     if(err)
        return console.log(err);
-    console.log(partidos)
-    res.render('partidos', { title: 'Torneos URS',
+    res.render('editor', { title: 'Torneos URS',
                            partidos: partidos
                           });
   });
