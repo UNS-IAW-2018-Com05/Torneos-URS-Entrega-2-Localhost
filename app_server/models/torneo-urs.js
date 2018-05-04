@@ -111,7 +111,11 @@ const editorSchema = new mongoose.Schema({
 });
 
 const usuarioSchema = new mongoose.Schema({
-  mail: {
+  username: {
+    type: String,
+    required: true
+  },
+  googleid: {
     type: String,
     required: true
   }

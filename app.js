@@ -10,9 +10,10 @@ const usersRouter = require('./app_server/routes/users');
 const fechasRouter = require('./app_server/routes/fixture');
 const posicionesRouter = require('./app_server/routes/posiciones');
 const clubesRouter = require('./app_server/routes/clubes');
-const loginRouter = require('./app_server/routes/login');
+const authRouter = require('./app_server/routes/auth');
 const apiRouter = require('./app_server/routes/api');
 const editorRouter = require('./app_server/routes/editor');
+const passportSetup = require('./app_server/config/passport-setup');
 
 var app = express();
 
@@ -31,9 +32,9 @@ app.use('/users', usersRouter);
 app.use('/fixture',fechasRouter);
 app.use('/posiciones', posicionesRouter);
 app.use('/clubes', clubesRouter);
-app.use('/login', loginRouter);
 app.use('/api',apiRouter);
 app.use('/editor',editorRouter);
+app.use('/auth',authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
