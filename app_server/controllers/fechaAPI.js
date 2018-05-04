@@ -3,7 +3,6 @@ const Fecha = mongoose.model('Fecha');
 const Partido = mongoose.model('Partido');
 
 const getFecha = function (req, res) {
-  console.log(req.query.id);
   Fecha.
   findOne({numero:req.query.id}).
   populate({ path: 'partidos',

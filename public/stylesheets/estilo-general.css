@@ -9,16 +9,21 @@
     width: 100%;
 }
 
+body, html {
+    height: 100%;
+}
 
-#image {
-/* the image you want to 'watermark' */
-height: 25px; /* or whatever, equal to the image you want 'watermarked' */
-width: 25px; /* as above */
-background-image: url(imagenes/Union-de-Rugby-del-Sur.png);
-background-position: bottom,right;
-background-repeat: no-repeat;
-position: relative;
+.bg {
+    /* The image used */
+    background-image: url("../images/fondo.jpg");
 
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #image img {

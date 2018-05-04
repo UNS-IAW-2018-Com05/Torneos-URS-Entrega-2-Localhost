@@ -12,6 +12,7 @@ const posicionesRouter = require('./app_server/routes/posiciones');
 const clubesRouter = require('./app_server/routes/clubes');
 const loginRouter = require('./app_server/routes/login');
 const apiRouter = require('./app_server/routes/api');
+const editorRouter = require('./app_server/routes/editor');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/posiciones', posicionesRouter);
 app.use('/clubes', clubesRouter);
 app.use('/login', loginRouter);
 app.use('/api',apiRouter);
+app.use('/editor',editorRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

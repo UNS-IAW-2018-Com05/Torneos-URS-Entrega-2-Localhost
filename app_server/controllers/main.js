@@ -48,7 +48,6 @@ function obtenerPartidos(fechaMasReciente){
              populate:[{ path: 'local'},{ path: 'visitante'}]
            }).
   exec(function (err, resultado) {
-    console.log(resultado);
     ress.render('index', {
       title: 'Torneos URS',
       fecha: fechaReciente,
