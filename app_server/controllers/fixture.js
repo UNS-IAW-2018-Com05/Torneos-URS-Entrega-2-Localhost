@@ -5,10 +5,12 @@ const Partido = mongoose.model('Partido');
 var fechaReciente;
 
 var ress;
+var user;
 
 /* GET home page. */
 const fixture = function (req, res) {
   ress = res;
+  user = req.user;
   obtenerFechas();
 };
 
@@ -52,7 +54,8 @@ function obtenerPartidos(fechaMasReciente,fechas){
       title: 'Torneos URS',
       fechas: fechas,
       fechaMasReciente: fechaMasReciente,
-      partidos: resultado.partidos
+      partidos: resultado.partidos,
+      user: user
     })
   });
 }
