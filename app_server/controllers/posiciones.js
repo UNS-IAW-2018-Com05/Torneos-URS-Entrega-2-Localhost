@@ -3,10 +3,12 @@ const Partido = mongoose.model('Partido');
 const Club = mongoose.model('Club');
 
 var ress;
+var user;
 
 const posiciones = function (req, res) {
 
   ress = res;
+  user = req.user;
   var posicionesOrdenadas = obtenerTotalDePuntos();
 
 };
@@ -76,7 +78,7 @@ const posiciones = function (req, res) {
               i++;
               mapeo.delete((clubConPuntajeMaximo._id).toString());
             }
-            ress.render('posiciones', { title: 'Posiciones', posiciones:posiciones });
+            ress.render('posiciones', { title: 'Posiciones', posiciones:posiciones, user: user });
 
 
 
