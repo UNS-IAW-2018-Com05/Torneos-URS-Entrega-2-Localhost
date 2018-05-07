@@ -41,7 +41,7 @@
           <td><input type="number" class="form-control"></td>
           <td><input type="number" class="form-control"></td>
           <td>
-            <button class="btn"><i class="far fa-save"></i></button>
+            <button class="btn" id="{{partido._id}}" onclick="guardarPartido(this)"><i class="far fa-save"></i></button>
           </td>
         </tr>
       {% set index = index+1 %}
@@ -49,4 +49,5 @@
     </tbody>
   </table>
 </div>
+<script src="/javascripts/guardarPartido.js"></script>
 {% endblock %}

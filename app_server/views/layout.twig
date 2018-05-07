@@ -58,7 +58,9 @@
             {% if user %}
               <a href="/auth/logout">{{user.username}}</a>
             {% else %}
-              <a href="/auth/google">Sign In with Google</a>
+            <a class="loginBtn loginBtn--google" href="/auth/google">
+              Login with Google
+            </a>
            {% endif %}
 
         </div>
@@ -75,7 +77,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="/javascripts/cambioFechas.js"></script>
-    <script src="/javascripts/signInScript.js"></script>
 
 
 

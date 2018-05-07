@@ -73,7 +73,6 @@ const posiciones = function (req, res) {
               }
               var clubPuntaje={club: clubConPuntajeMaximo , puntaje: puntajeMaximo};
               posiciones[i]=clubPuntaje;
-              console.log(clubPuntaje);
               i++;
               mapeo.delete((clubConPuntajeMaximo._id).toString());
             }

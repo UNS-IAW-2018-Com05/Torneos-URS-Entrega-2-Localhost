@@ -9,7 +9,7 @@ function mostrarPartidos(id){
 
   $.ajax({
     type: 'get',
-    url: './api',
+    url: './api/fecha',
     data: "id="+id,
     success: function(data) {
         var partidos = data.partidos;

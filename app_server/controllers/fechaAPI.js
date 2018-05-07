@@ -21,6 +21,27 @@ const getFecha = function (req, res) {
 		})
 };
 
+const savePartido = function(req,res) {
+  Partido.findByIdAndUpdate(
+    // the id of the item to find
+    req.body.id,
+
+    // the change to be made. Mongoose will smartly combine your existing
+    // document with this change, which allows for partial updates too
+    req.body,
+
+    // an option that asks mongoose to return the updated version
+    // of the document instead of the pre-updated one.
+
+    // the callback function
+    (err, partido) => {
+    // Handle any possible database errors
+        if (err) return res.status(500).send(err);
+        return res.send(partido._id);
+    }
+)
+}
+
 module.exports = {
-	getFecha
+	getFecha,savePartido
 };
