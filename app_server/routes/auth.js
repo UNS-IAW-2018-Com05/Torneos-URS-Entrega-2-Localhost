@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 const auth = require('../controllers/auth');
 
@@ -15,6 +16,10 @@ router.get('/google',auth.login);
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-router.get('/google/redirect',auth.redirect);
+router.get('/google/redirect', passport.authenticate('google'),(req, res) => {
+    res.redirect('/');
+});
+
+router.get('/logout', auth.logout);
 
 module.exports = router;

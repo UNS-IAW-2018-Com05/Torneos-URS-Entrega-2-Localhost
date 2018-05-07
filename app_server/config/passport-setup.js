@@ -1,30 +1,40 @@
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const mongoose = require('mongoose');
-const Usuario = mongoose.model('Usuario');
+const User = require('../models/user-model');
 
-// Use the GoogleStrategy within Passport.
-//   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, an accessToken, refreshToken, and Google
-//   profile), and invoke a callback with a user object.
-passport.use(new GoogleStrategy({
-    callbackURL: '/auth/google/redirect',
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id).then((user) => {
+        done(null, user);
+    });
+});
+
+passport.use(
+    new GoogleStrategy({
+        // options for google strategy
     clientID: '718710327542-i1qkj1netsviejoi3j4587qf3btstg69.apps.googleusercontent.com',
-    clientSecret: 'ZewuhY_H74MlofFUQW8l5XyM'
-  }, (accessToken, refreshToken, profile, done) => {
-    Usuario.findOne({googleid: profile.id}).then((currentUser) => {
-      if(currentUser){
-        return done(null, currentUser);
-      }
-      else{
-          new Usuario({
-            username: profile.displayName,
-            googleid: profile.id
-          }
-        ).save().then((newUser) => {
-          return done(null, newUser);
-        })
-      }
+    clientSecret: 'ZewuhY_H74MlofFUQW8l5XyM',
+    callbackURL: '/auth/google/redirect'
+    }, (accessToken, refreshToken, profile, done) => {
+        // check if user already exists in our own db
+        User.findOne({googleId: profile.id}).then((currentUser) => {
+            if(currentUser){
+                // already have this user
+                console.log('user is: ', currentUser);
+                done(null, currentUser);
+            } else {
+                // if not, create user in our db
+                new User({
+                    googleId: profile.id,
+                    username: profile.displayName
+                }).save().then((newUser) => {
+                    console.log('created new user: ', newUser);
+                    done(null, newUser);
+                });
+            }
+        });
     })
-  })
 );

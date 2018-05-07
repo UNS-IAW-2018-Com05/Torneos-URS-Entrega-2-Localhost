@@ -103,28 +103,8 @@ const eventoSchema = new mongoose.Schema({
   }
 });
 
-const editorSchema = new mongoose.Schema({
-  mail: {
-    type: String,
-    required: true
-  }
-});
-
-const usuarioSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true
-  },
-  googleid: {
-    type: String,
-    required: true
-  }
-});
-
 mongoose.model('Club', clubSchema);
 mongoose.model('Jugador', jugadorSchema);
 mongoose.model('Partido', partidoSchema);
 mongoose.model('Fecha', fechaSchema);
 mongoose.model('Evento', eventoSchema);
-mongoose.model('Editor', editorSchema);
-mongoose.model('Usuario', usuarioSchema);

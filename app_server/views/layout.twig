@@ -55,8 +55,11 @@
             </ul>
             <button type="button" class="btn btn-primary" onclick="CambiarEstilo()" id="btnCambiarEstilo">Cambiar Estilo</button>
             &nbsp;
-            <!--<div class="g-signin2" data-onsuccess="onSignIn" display="block"></div>-->
-            <a href="/auth/google">Sign In with Google</a>
+            {% if user %}
+              <a href="/auth/logout">{{user.username}}</a>
+            {% else %}
+              <a href="/auth/google">Sign In with Google</a>
+           {% endif %}
 
         </div>
     </nav>
