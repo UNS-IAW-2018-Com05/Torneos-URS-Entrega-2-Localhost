@@ -1,8 +1,16 @@
+.glyphicon-sunglasses:before {
+  content: "\e240";
+}
+
 .navbar.navbar-expand-lg.navbar-light{
 
   font-size: 20px;
   background-color: #9F81F7;
 
+}
+
+.dropdown-content {
+    right: 0;
 }
 
 .card-im-top {
@@ -50,7 +58,6 @@ filter:alpha(opacity=50); /* for <= IE 8 */
 }
 
 body { padding: 2em; }
-
 
 /* Shared */
 .loginBtn {

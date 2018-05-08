@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const Fecha = mongoose.model('Fecha');
 const Partido = mongoose.model('Partido');
-
-
+const User = require('../models/user-model');
 
 const getFecha = function (req, res) {
 
@@ -26,25 +25,33 @@ const getFecha = function (req, res) {
 
 const savePartido = function(req,res) {
   Partido.findByIdAndUpdate(
-    // the id of the item to find
     req.body.id,
-
-    // the change to be made. Mongoose will smartly combine your existing
-    // document with this change, which allows for partial updates too
     req.body,
-
-    // an option that asks mongoose to return the updated version
-    // of the document instead of the pre-updated one.
-
-    // the callback function
     (err, partido) => {
-    // Handle any possible database errors
         if (err) return res.status(500).send(err);
         return res.send(partido._id);
     }
-)
+  )
+}
+
+const guardarEstilo = function(req,res){
+  console.log(req.query.id);
+  var data;
+  if(req.query.id == 1)
+    data = {estilo: true};
+  else {
+    data = {estilo: false}
+  }
+  User.findByIdAndUpdate(
+    req.user._id,
+    data,
+    (err, usuario) => {
+        if (err) return res.status(500).send(err);
+        res.send('ok');
+    }
+  )
 }
 
 module.exports = {
-	getFecha,savePartido
+	getFecha,savePartido,guardarEstilo
 };

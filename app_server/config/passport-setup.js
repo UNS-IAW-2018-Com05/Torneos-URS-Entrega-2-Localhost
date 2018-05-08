@@ -30,7 +30,10 @@ passport.use(
                 new User({
                     googleId: profile.id,
                     username: profile.displayName,
-                    editor: false
+                    editor: false,
+                    estilo: false,
+                    thumbnail: profile._json.image.url,
+                    googleplusurl: profile._json.url
                 }).save().then((newUser) => {
                     console.log('created new user: ', newUser);
                     done(null, newUser);

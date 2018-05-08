@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-const fechaAPI = require('../controllers/fechaAPI');
+const API = require('../controllers/API');
 const middleware =  require('../auth/middleware');
 
 /* GET home page. */
-router.get('/fecha', fechaAPI.getFecha);
+router.get('/fecha', API.getFecha);
 
-router.post('/partidoNuevo', middleware, fechaAPI.savePartido);
+router.post('/partidoNuevo', middleware, API.savePartido);
+
+router.get('/guardarEstilo',middleware, API.guardarEstilo);
 
 module.exports = router;
